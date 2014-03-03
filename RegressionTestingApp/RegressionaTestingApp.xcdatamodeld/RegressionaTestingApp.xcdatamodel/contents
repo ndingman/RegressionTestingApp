@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Project" syncable="YES">
+        <attribute name="build" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ostarget" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Stories" syncable="YES">
+        <attribute name="actualresults" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bugnumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passfailipad" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passfailiphone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stepstoexecute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storycomments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storynumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="testingcomments" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Project" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Stories" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

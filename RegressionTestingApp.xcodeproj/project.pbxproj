@@ -13,8 +13,6 @@
 		43C3FD9C18C5237F0035627D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C3FD9B18C5237F0035627D /* CoreData.framework */; };
 		43C3FDA218C5237F0035627D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43C3FDA018C5237F0035627D /* InfoPlist.strings */; };
 		43C3FDA418C5237F0035627D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDA318C5237F0035627D /* main.m */; };
-		43C3FDA818C5237F0035627D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDA718C5237F0035627D /* AppDelegate.m */; };
-		43C3FDAB18C5237F0035627D /* RegressionTestingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDA918C5237F0035627D /* RegressionTestingApp.xcdatamodeld */; };
 		43C3FDAD18C5237F0035627D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C3FDAC18C5237F0035627D /* Images.xcassets */; };
 		43C3FDB418C5237F0035627D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C3FDB318C5237F0035627D /* XCTest.framework */; };
 		43C3FDB518C5237F0035627D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C3FD9518C5237F0035627D /* Foundation.framework */; };
@@ -22,6 +20,21 @@
 		43C3FDB718C5237F0035627D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C3FD9B18C5237F0035627D /* CoreData.framework */; };
 		43C3FDBF18C5237F0035627D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43C3FDBD18C5237F0035627D /* InfoPlist.strings */; };
 		43C3FDC118C5237F0035627D /* RegressionTestingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDC018C5237F0035627D /* RegressionTestingAppTests.m */; };
+		43C3FDCF18C523A40035627D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDCC18C523A40035627D /* Project.m */; };
+		43C3FDD018C523A40035627D /* Stories.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDCE18C523A40035627D /* Stories.m */; };
+		43C3FDDA18C523AD0035627D /* FailPassPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDD318C523AD0035627D /* FailPassPickerViewController.m */; };
+		43C3FDDB18C523AD0035627D /* PassFailPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDD518C523AD0035627D /* PassFailPickerViewController.m */; };
+		43C3FDDC18C523AD0035627D /* PriorityPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDD718C523AD0035627D /* PriorityPickerViewController.m */; };
+		43C3FDDD18C523AD0035627D /* StatusPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDD918C523AD0035627D /* StatusPickerViewController.m */; };
+		43C3FDE718C523B50035627D /* EditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDE018C523B50035627D /* EditProjectViewController.m */; };
+		43C3FDE818C523B50035627D /* EditStoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDE218C523B50035627D /* EditStoriesViewController.m */; };
+		43C3FDE918C523B50035627D /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDE418C523B50035627D /* ProjectViewController.m */; };
+		43C3FDEA18C523B50035627D /* StoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDE618C523B50035627D /* StoriesViewController.m */; };
+		43C3FDED18C523CD0035627D /* EditProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C3FDEB18C523CD0035627D /* EditProjectViewController.xib */; };
+		43C3FDEE18C523CD0035627D /* EditStoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C3FDEC18C523CD0035627D /* EditStoriesViewController.xib */; };
+		43C3FDF118C523D70035627D /* RegressionaTestingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDEF18C523D70035627D /* RegressionaTestingApp.xcdatamodeld */; };
+		43C3FDF418C523EE0035627D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C3FDF318C523EE0035627D /* AppDelegate.m */; };
+		43C3FDF618C5240C0035627D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C3FDF518C5240C0035627D /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +57,39 @@
 		43C3FDA118C5237F0035627D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43C3FDA318C5237F0035627D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43C3FDA518C5237F0035627D /* RegressionTestingApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RegressionTestingApp-Prefix.pch"; sourceTree = "<group>"; };
-		43C3FDA618C5237F0035627D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		43C3FDA718C5237F0035627D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		43C3FDAA18C5237F0035627D /* RegressionTestingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RegressionTestingApp.xcdatamodel; sourceTree = "<group>"; };
 		43C3FDAC18C5237F0035627D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		43C3FDB218C5237F0035627D /* RegressionTestingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegressionTestingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C3FDB318C5237F0035627D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		43C3FDBC18C5237F0035627D /* RegressionTestingAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegressionTestingAppTests-Info.plist"; sourceTree = "<group>"; };
 		43C3FDBE18C5237F0035627D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43C3FDC018C5237F0035627D /* RegressionTestingAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegressionTestingAppTests.m; sourceTree = "<group>"; };
+		43C3FDCB18C523A40035627D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		43C3FDCC18C523A40035627D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		43C3FDCD18C523A40035627D /* Stories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stories.h; sourceTree = "<group>"; };
+		43C3FDCE18C523A40035627D /* Stories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stories.m; sourceTree = "<group>"; };
+		43C3FDD218C523AD0035627D /* FailPassPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailPassPickerViewController.h; sourceTree = "<group>"; };
+		43C3FDD318C523AD0035627D /* FailPassPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailPassPickerViewController.m; sourceTree = "<group>"; };
+		43C3FDD418C523AD0035627D /* PassFailPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassFailPickerViewController.h; sourceTree = "<group>"; };
+		43C3FDD518C523AD0035627D /* PassFailPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassFailPickerViewController.m; sourceTree = "<group>"; };
+		43C3FDD618C523AD0035627D /* PriorityPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriorityPickerViewController.h; sourceTree = "<group>"; };
+		43C3FDD718C523AD0035627D /* PriorityPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityPickerViewController.m; sourceTree = "<group>"; };
+		43C3FDD818C523AD0035627D /* StatusPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPickerViewController.h; sourceTree = "<group>"; };
+		43C3FDD918C523AD0035627D /* StatusPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPickerViewController.m; sourceTree = "<group>"; };
+		43C3FDDF18C523B50035627D /* EditProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProjectViewController.h; sourceTree = "<group>"; };
+		43C3FDE018C523B50035627D /* EditProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProjectViewController.m; sourceTree = "<group>"; };
+		43C3FDE118C523B50035627D /* EditStoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditStoriesViewController.h; sourceTree = "<group>"; };
+		43C3FDE218C523B50035627D /* EditStoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditStoriesViewController.m; sourceTree = "<group>"; };
+		43C3FDE318C523B50035627D /* ProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectViewController.h; sourceTree = "<group>"; };
+		43C3FDE418C523B50035627D /* ProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectViewController.m; sourceTree = "<group>"; };
+		43C3FDE518C523B50035627D /* StoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoriesViewController.h; sourceTree = "<group>"; };
+		43C3FDE618C523B50035627D /* StoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoriesViewController.m; sourceTree = "<group>"; };
+		43C3FDEB18C523CD0035627D /* EditProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProjectViewController.xib; sourceTree = "<group>"; };
+		43C3FDEC18C523CD0035627D /* EditStoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditStoriesViewController.xib; sourceTree = "<group>"; };
+		43C3FDF018C523D70035627D /* RegressionaTestingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RegressionaTestingApp.xcdatamodel; sourceTree = "<group>"; };
+		43C3FDF218C523EE0035627D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		43C3FDF318C523EE0035627D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		43C3FDF518C5240C0035627D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		43C3FDF718C524310035627D /* RegressionTestingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RegressionTestingApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C3FDF618C5240C0035627D /* MessageUI.framework in Frameworks */,
 				43C3FD9818C5237F0035627D /* CoreGraphics.framework in Frameworks */,
 				43C3FD9C18C5237F0035627D /* CoreData.framework in Frameworks */,
 				43C3FD9A18C5237F0035627D /* UIKit.framework in Frameworks */,
@@ -84,6 +122,9 @@
 		43C3FD8918C5237F0035627D = {
 			isa = PBXGroup;
 			children = (
+				43C3FDDE18C523B40035627D /* View Controllers */,
+				43C3FDD118C523AD0035627D /* UIPickerView Controllers */,
+				43C3FDCA18C523A40035627D /* Data Models */,
 				43C3FD9D18C5237F0035627D /* RegressionTestingApp */,
 				43C3FDBA18C5237F0035627D /* RegressionTestingAppTests */,
 				43C3FD9418C5237F0035627D /* Frameworks */,
@@ -103,6 +144,7 @@
 		43C3FD9418C5237F0035627D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43C3FDF518C5240C0035627D /* MessageUI.framework */,
 				43C3FD9518C5237F0035627D /* Foundation.framework */,
 				43C3FD9718C5237F0035627D /* CoreGraphics.framework */,
 				43C3FD9918C5237F0035627D /* UIKit.framework */,
@@ -115,10 +157,13 @@
 		43C3FD9D18C5237F0035627D /* RegressionTestingApp */ = {
 			isa = PBXGroup;
 			children = (
-				43C3FDA618C5237F0035627D /* AppDelegate.h */,
-				43C3FDA718C5237F0035627D /* AppDelegate.m */,
+				43C3FDF718C524310035627D /* RegressionTestingApp.entitlements */,
+				43C3FDF218C523EE0035627D /* AppDelegate.h */,
+				43C3FDF318C523EE0035627D /* AppDelegate.m */,
+				43C3FDEB18C523CD0035627D /* EditProjectViewController.xib */,
+				43C3FDEC18C523CD0035627D /* EditStoriesViewController.xib */,
 				43C3FDAC18C5237F0035627D /* Images.xcassets */,
-				43C3FDA918C5237F0035627D /* RegressionTestingApp.xcdatamodeld */,
+				43C3FDEF18C523D70035627D /* RegressionaTestingApp.xcdatamodeld */,
 				43C3FD9E18C5237F0035627D /* Supporting Files */,
 			);
 			path = RegressionTestingApp;
@@ -151,6 +196,47 @@
 				43C3FDBD18C5237F0035627D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43C3FDCA18C523A40035627D /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				43C3FDCB18C523A40035627D /* Project.h */,
+				43C3FDCC18C523A40035627D /* Project.m */,
+				43C3FDCD18C523A40035627D /* Stories.h */,
+				43C3FDCE18C523A40035627D /* Stories.m */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		43C3FDD118C523AD0035627D /* UIPickerView Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				43C3FDD218C523AD0035627D /* FailPassPickerViewController.h */,
+				43C3FDD318C523AD0035627D /* FailPassPickerViewController.m */,
+				43C3FDD418C523AD0035627D /* PassFailPickerViewController.h */,
+				43C3FDD518C523AD0035627D /* PassFailPickerViewController.m */,
+				43C3FDD618C523AD0035627D /* PriorityPickerViewController.h */,
+				43C3FDD718C523AD0035627D /* PriorityPickerViewController.m */,
+				43C3FDD818C523AD0035627D /* StatusPickerViewController.h */,
+				43C3FDD918C523AD0035627D /* StatusPickerViewController.m */,
+			);
+			path = "UIPickerView Controllers";
+			sourceTree = "<group>";
+		};
+		43C3FDDE18C523B40035627D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				43C3FDE318C523B50035627D /* ProjectViewController.h */,
+				43C3FDE418C523B50035627D /* ProjectViewController.m */,
+				43C3FDDF18C523B50035627D /* EditProjectViewController.h */,
+				43C3FDE018C523B50035627D /* EditProjectViewController.m */,
+				43C3FDE518C523B50035627D /* StoriesViewController.h */,
+				43C3FDE618C523B50035627D /* StoriesViewController.m */,
+				43C3FDE118C523B50035627D /* EditStoriesViewController.h */,
+				43C3FDE218C523B50035627D /* EditStoriesViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +286,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Neil Dingman";
 				TargetAttributes = {
+					43C3FD9118C5237F0035627D = {
+						DevelopmentTeam = SF6L96FCYU;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					43C3FDB118C5237F0035627D = {
 						TestTargetID = 43C3FD9118C5237F0035627D;
 					};
@@ -228,8 +322,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C3FDEE18C523CD0035627D /* EditStoriesViewController.xib in Resources */,
 				43C3FDA218C5237F0035627D /* InfoPlist.strings in Resources */,
 				43C3FDAD18C5237F0035627D /* Images.xcassets in Resources */,
+				43C3FDED18C523CD0035627D /* EditProjectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +344,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43C3FDA818C5237F0035627D /* AppDelegate.m in Sources */,
+				43C3FDDD18C523AD0035627D /* StatusPickerViewController.m in Sources */,
+				43C3FDCF18C523A40035627D /* Project.m in Sources */,
+				43C3FDD018C523A40035627D /* Stories.m in Sources */,
+				43C3FDDB18C523AD0035627D /* PassFailPickerViewController.m in Sources */,
+				43C3FDDA18C523AD0035627D /* FailPassPickerViewController.m in Sources */,
+				43C3FDE818C523B50035627D /* EditStoriesViewController.m in Sources */,
+				43C3FDE718C523B50035627D /* EditProjectViewController.m in Sources */,
+				43C3FDF418C523EE0035627D /* AppDelegate.m in Sources */,
+				43C3FDDC18C523AD0035627D /* PriorityPickerViewController.m in Sources */,
 				43C3FDA418C5237F0035627D /* main.m in Sources */,
-				43C3FDAB18C5237F0035627D /* RegressionTestingApp.xcdatamodeld in Sources */,
+				43C3FDF118C523D70035627D /* RegressionaTestingApp.xcdatamodeld in Sources */,
+				43C3FDEA18C523B50035627D /* StoriesViewController.m in Sources */,
+				43C3FDE918C523B50035627D /* ProjectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,10 +477,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = RegressionTestingApp/RegressionTestingApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RegressionTestingApp/RegressionTestingApp-Prefix.pch";
 				INFOPLIST_FILE = "RegressionTestingApp/RegressionTestingApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FEBC0112-23AD-4815-A841-EFC3979A3BEA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -384,10 +493,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = RegressionTestingApp/RegressionTestingApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RegressionTestingApp/RegressionTestingApp-Prefix.pch";
 				INFOPLIST_FILE = "RegressionTestingApp/RegressionTestingApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FEBC0112-23AD-4815-A841-EFC3979A3BEA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -465,13 +577,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		43C3FDA918C5237F0035627D /* RegressionTestingApp.xcdatamodeld */ = {
+		43C3FDEF18C523D70035627D /* RegressionaTestingApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				43C3FDAA18C5237F0035627D /* RegressionTestingApp.xcdatamodel */,
+				43C3FDF018C523D70035627D /* RegressionaTestingApp.xcdatamodel */,
 			);
-			currentVersion = 43C3FDAA18C5237F0035627D /* RegressionTestingApp.xcdatamodel */;
-			path = RegressionTestingApp.xcdatamodeld;
+			currentVersion = 43C3FDF018C523D70035627D /* RegressionaTestingApp.xcdatamodel */;
+			path = RegressionaTestingApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

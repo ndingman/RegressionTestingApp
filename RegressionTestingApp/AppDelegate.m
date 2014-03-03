@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  RegressionTestingApp
 //
-//  Created by NEIL DINGMAN on 3/3/14.
-//  Copyright (c) 2014 Neil Dingman. All rights reserved.
+//  Created by NEIL DINGMAN on 7/17/13.
+//  Copyright (c) 2013 NEIL DINGMAN. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -19,7 +19,20 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    self.projectViewController = [[ProjectViewController alloc]initWithManagedObjectContext:self.managedObjectContext];
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.projectViewController];
+    self.window.rootViewController = self.navigationController;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
     [self.window makeKeyAndVisible];
+    
+    id currentToken = [[NSFileManager defaultManager]ubiquityIdentityToken];
+    if (currentToken) {
+        NSLog(@"iCloud access on with id %@", currentToken);
+    } else {
+        NSLog(@"No iCloud access");
+    }
+    
     return YES;
 }
 
@@ -54,34 +67,12 @@
 - (void)saveContext
 {
     NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
+    if ([self.managedObjectContext hasChanges] && ![self.managedObjectContext save:&error]) {
+        NSLog(@"Core Data error %@, %@", error, [error userInfo]);
     }
 }
 
 #pragma mark - Core Data stack
-
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    return _managedObjectContext;
-}
 
 // Returns the managed object model for the application.
 // If the model doesn't already exist, it is created from the application's model.
@@ -97,53 +88,142 @@
 
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+	
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"RegressionTestingApp.sqlite"];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                   initWithManagedObjectModel: [self managedObjectModel]];
     
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
+    NSPersistentStoreCoordinator* psc = _persistentStoreCoordinator;
+	NSString *storePath = [[self applicationDocumentsDirectory]
+                           stringByAppendingPathComponent:@"RegressionTestingApp.sqlite"];
+    
+    // done asynchronously since it may take a while
+	// to download preexisting iCloud content
+    dispatch_async(dispatch_get_global_queue(
+                                             DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSURL *storeUrl = [NSURL fileURLWithPath:storePath];
+        
+        
+        // building the path to store transaction logs
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *transactionLogsURL = [fileManager
+                                     URLForUbiquityContainerIdentifier:nil];
+        NSString* coreDataCloudContent = [[transactionLogsURL path]
+                                          stringByAppendingPathComponent:@"RegressionTestingApp_data"];
+        transactionLogsURL = [NSURL fileURLWithPath:coreDataCloudContent];
+        
+        //  Building the options array for the coordinator
+        NSDictionary* options = [NSDictionary
+                                 dictionaryWithObjectsAndKeys:
+                                 @"comneildingmancoredata.notes",
+                                 NSPersistentStoreUbiquitousContentNameKey,
+                                 transactionLogsURL,
+                                 NSPersistentStoreUbiquitousContentURLKey,
+                                 [NSNumber numberWithBool:YES],
+                                 NSMigratePersistentStoresAutomaticallyOption,
+                                 nil];
+        
+        
+        NSError *error = nil;
+        
+        [psc lock];
+        
+        if (![psc addPersistentStoreWithType:NSSQLiteStoreType
+                               configuration:nil
+                                         URL:storeUrl
+                                     options:options
+                                       error:&error]) {
+            
+            NSLog(@"Core data error %@, %@", error, [error userInfo]);
+            
+	    }
+        
+        [psc unlock];
+        
+        // post a notification to tell the main thread
+	    // to refresh the user interface
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSLog(@"persistent store added correctly");
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"comneildingmanrefetchNotes"
+             object:self
+             userInfo:nil];
+        });
+    });
     
     return _persistentStoreCoordinator;
+    
+}
+
+// Returns the managed object context for the application.
+// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext != nil) {
+        
+        return _managedObjectContext;
+        
+    }
+    
+    NSPersistentStoreCoordinator *coordinator =
+    [self persistentStoreCoordinator];
+    
+    if (coordinator != nil) {
+        // choose a concurrency type for the context
+        NSManagedObjectContext* moc =
+        [[NSManagedObjectContext alloc]
+         initWithConcurrencyType:NSMainQueueConcurrencyType];
+        
+        [moc performBlockAndWait:^{
+            // configure context properties
+            [moc setPersistentStoreCoordinator: coordinator];
+            
+            [[NSNotificationCenter defaultCenter]
+             addObserver:self
+             selector:@selector(mergeChangesFrom_iCloud:)
+             name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
+             object:coordinator];
+            
+        }];
+        _managedObjectContext = moc;
+    }
+    
+    return _managedObjectContext;
+    
+}
+
+- (void)mergeChangesFrom_iCloud:(NSNotification *)notification {
+    
+    NSManagedObjectContext* moc = [self managedObjectContext];
+    
+    [moc performBlock:^{
+        [self mergeiCloudChanges:notification
+                      forContext:moc];
+    }];
+    
+}
+
+//
+- (void)mergeiCloudChanges:(NSNotification*)note
+                forContext:(NSManagedObjectContext*)moc {
+    
+    [moc mergeChangesFromContextDidSaveNotification:note];
+    //Refresh view with no fetch controller if any
+    
 }
 
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
+- (NSString *)applicationDocumentsDirectory
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 @end
